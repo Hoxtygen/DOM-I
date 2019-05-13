@@ -40,11 +40,13 @@ const siteContent = {
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
-/* const pageNav = document.querySelectorAll('a');
-console.log(pageNav);
-pageNav[0].inne
-const fillAnchor = siteContent.nav;
-console.log(fillAnchor) */
+
+
+//navigation
+const pageNav = document.querySelectorAll('a');
+pageNavArray = [...pageNav].forEach((e, i) => e.textContent = Object.values(siteContent.nav)[i])
+
+//call to action
 const cta = document.querySelector('.cta');
 cta.children[0].children[0].textContent = siteContent["cta"]["h1"]
 cta.children[0].children[1].textContent = siteContent["cta"]["button"]
@@ -83,4 +85,3 @@ contact.children[3].textContent = siteContent["contact"]["email"];
 //footer
 const footer = document.querySelector("footer");
 footer.children[0].textContent = siteContent["footer"]["copyright"]
-console.log(footer.children)
