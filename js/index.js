@@ -53,7 +53,6 @@ appTag.textContent = "Blog";
 const anchorTag = document.createElement("a");
 anchorTag.textContent = "Testimonies";
 const nav = document.querySelector("nav");
-console.log(nav)
 nav.appendChild(appTag);
 nav.prepend(anchorTag);
 
@@ -61,7 +60,6 @@ nav.prepend(anchorTag);
 //call to action
 const cta = document.querySelector('.cta');
 const arrayHeading = (siteContent["cta"]["h1"]).split(" ");
-//cta.children[0].children[0].textContent = siteContent["cta"]["h1"]
 const h1 = cta.children[0].children[0]
 const br = document.createElement("br")
 const abr = document.createElement("br")
@@ -72,7 +70,7 @@ h1.appendChild(abr);
 h1.appendChild(document.createTextNode(arrayHeading[2]));
 
 
-console.log(h1)
+
 cta.children[0].children[1].textContent = siteContent["cta"]["button"]
 const ctaImg = document.getElementById("cta-img");
 ctaImg.setAttribute('src', siteContent["cta"]["img-src"]);
@@ -102,10 +100,13 @@ bottomContent.children[2].children[1].textContent = siteContent["main-content"][
 //contact
 
 const contact = document.querySelector(".contact")
+const cbr = document.createElement('br')
 contact.children[0].textContent = siteContent["contact"]["contact-h4"];
-contact.children[1].textContent = siteContent["contact"]["address"];
+contact.children[1].textContent = siteContent["contact"]["address"].substring(0, 19);
 contact.children[2].textContent = siteContent["contact"]["phone"];
 contact.children[3].textContent = siteContent["contact"]["email"];
+contact.children[1].appendChild(cbr);
+contact.children[1].appendChild(document.createTextNode(siteContent["contact"]["address"].substring(19)))
 
 //footer
 const footer = document.querySelector("footer");
@@ -114,3 +115,15 @@ footer.children[0].textContent = siteContent["footer"]["copyright"]
 
 //add color to nav links
 Array.from(document.querySelector('nav').children).forEach(e => e.style.color = "green")
+
+//Style all h4
+const h4= document.querySelectorAll("h4");
+h4.forEach(element => {
+  element.style.color = "green"
+});
+console.log(h4)
+
+//add eventListener to the button
+const button = cta.children[0].children[1]
+button.addEventListener('click', () => alert('Are you sure?'))
+console.log(button)
