@@ -44,14 +44,39 @@ logo.setAttribute('src', siteContent["nav"]["img-src"])
 
 //navigation
 const pageNav = document.querySelectorAll('a');
+//pageNav.style.color = "green";
 pageNavArray = [...pageNav].forEach((e, i) => e.textContent = Object.values(siteContent.nav)[i])
+const appTag = document.createElement("a");
+
+appTag.setAttribute("href", "#blog");
+appTag.textContent = "Blog";
+const anchorTag = document.createElement("a");
+anchorTag.textContent = "Testimonies";
+const nav = document.querySelector("nav");
+console.log(nav)
+nav.appendChild(appTag);
+nav.prepend(anchorTag);
+
 
 //call to action
 const cta = document.querySelector('.cta');
-cta.children[0].children[0].textContent = siteContent["cta"]["h1"]
+const arrayHeading = (siteContent["cta"]["h1"]).split(" ");
+//cta.children[0].children[0].textContent = siteContent["cta"]["h1"]
+const h1 = cta.children[0].children[0]
+const br = document.createElement("br")
+const abr = document.createElement("br")
+h1.appendChild(document.createTextNode(arrayHeading[0]));
+h1.appendChild(br)
+h1.appendChild(document.createTextNode(arrayHeading[1]));
+h1.appendChild(abr);
+h1.appendChild(document.createTextNode(arrayHeading[2]));
+
+
+console.log(h1)
 cta.children[0].children[1].textContent = siteContent["cta"]["button"]
 const ctaImg = document.getElementById("cta-img");
-ctaImg.setAttribute('src', siteContent["cta"]["img-src"])
+ctaImg.setAttribute('src', siteContent["cta"]["img-src"]);
+
 
 //top content
 const topContent = document.querySelector(".top-content");
@@ -85,3 +110,7 @@ contact.children[3].textContent = siteContent["contact"]["email"];
 //footer
 const footer = document.querySelector("footer");
 footer.children[0].textContent = siteContent["footer"]["copyright"]
+
+
+//add color to nav links
+Array.from(document.querySelector('nav').children).forEach(e => e.style.color = "green")
